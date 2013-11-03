@@ -26,9 +26,19 @@ public class ArrayCopier {
     public static void main(String [] args){
         int [] src ={1,2,3,4,5,6,7,8,9,10};
         int [] dst;
-        dst=new int[10];
-    ArrayCopier copier1=new ArrayCopier();
-    copier1.copy(src, dst);
+        dst=new int[5];
+        ArrayCopier copier1=new ArrayCopier();
+        copier1.copy(src, dst);
+        int [] src1={5,6,7};
+        int [] dst1;
+        dst1=new int[7];
+        ArrayCopier copier2=new ArrayCopier();
+        copier2.copy(src1, dst1);
+        int [] src2={10,12,13,14,15};
+        int [] dst2;
+        dst2=new int[5];
+        ArrayCopier copier3=new ArrayCopier();
+        copier3.copy(src2, dst2);
 
     }
 }

@@ -1,0 +1,35 @@
+Calculator myCalc=new Calculator()
+
+print "Please enter number 1: "
+int num1=Integer.parseInt(System.console().readLine());
+print "Please enter number 2: "
+int num2=Integer.parseInt(System.console().readLine());
+
+println "What would you like to do? "
+println "1-Add numbers"
+println "2-Subtract numbers"
+println "3-Multiply numbers"
+println "4-Divide numbers"
+println "5-Find modulo"
+
+int input=Integer.parseInt(System.console().readLine())
+print "The result is: "
+switch(input){
+    case 1:
+        myCalc.add(num1, num2);
+        break;
+    case 2:
+        myCalc.subtract(num1, num2);
+        break;
+    case 3:
+        myCalc.multiply(num1, num2);
+        break;
+    case 4:
+        myCalc.divide(num1, num2);
+        break;
+    case 5:
+        myCalc.modulus(num1, num2);
+        break;
+
+}
+

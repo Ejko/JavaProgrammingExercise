@@ -1,0 +1,18 @@
+MatrixChecker matrix1=new MatrixChecker(7);
+MatrixChecker matrix2=new MatrixChecker(3,4);
+
+int [] arr1=[1,2,3,4,3,2,1];
+int [][] arr2=[[5,3,7],[5,6,4],[7,4,5]];
+int [][] arr3=[[3,5,6],[0,7,8],[0,0,9],[0,10,0]]
+
+println "Check if array " + arr1 + " is symmetrical"
+println matrix1.isSymmetrical(arr1);
+
+println "Check if array" + arr2 + "is symmetrical"
+
+println matrix2.isSymmetrical(arr2);
+
+println "Check if array" + arr3 + "is triangular"
+
+println matrix2.isTriangular(arr3);
+

@@ -6,9 +6,9 @@
  * To change this template use File | Settings | File Templates.
  */
 public class Target {
-
+    //a three dimensional array
     private int[][][] array;
-
+    //constructor method, also initializes array elements to 0
     public Target(int x, int y, int z) {
         array = new int[x][y][z];
         for (int i = 0; i < array.length; i++) {
@@ -19,7 +19,7 @@ public class Target {
             }
         }
     }
-
+    //initializes a random position in the array to 1
     public void init() {
 
         int heightDim = (int) Math.abs(array.length * Math.random());
@@ -29,18 +29,19 @@ public class Target {
     }
 
     public Result fire(int p1, int p2, int p3) {
-        int leftRight = 0;
-        int highLow = 0;
-        int shortLong = 0;
+        int leftRight = 0;      //will hold the second dimension pos of the target(1)
+        int highLow = 0;        //will hold the first dimension pos of the target(1)
+        int shortLong = 0;      //will hold the third dimension pos of the target
         boolean onTargetLeftRight = false;
         boolean onTargetHighLow = false;
         boolean onTargetShortLong = false;
+        //out of range is any of the coordinates are bigger than the array or negative
         if ((p1 > array.length || p1 < 0) || (p2 > array[0].length || p2 < 0) || (p3 > array[0][0].length || p2 < 0)) {
 
             return Result.OUT_OF_RANGE;
 
         }
-
+        //loops through the whole array and finds the position of the target
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[0].length; j++) {
                 for (int n = 0; n < array[0][0].length; n++) {
@@ -52,6 +53,8 @@ public class Target {
                 }
             }
         }
+        //checks for left and right first, as these take precedence over anything else
+        //if left right is wrong, it will always return first and the rest will not be checked
         if (p2 == leftRight) {
             onTargetLeftRight = true;
         } else if (p2 > leftRight) {
@@ -73,11 +76,12 @@ public class Target {
         } else {
             return Result.FAIL_SHORT;
         }
+        //only is all the positions were specified correctly the value becomes HIT
         if (onTargetLeftRight && onTargetHighLow && onTargetShortLong) {
 
             return Result.HIT;
         }
-     throw new RuntimeException();
+     throw new RuntimeException(); //using an exception here to avoid having to return at the end
     }
 
 
@@ -120,8 +124,8 @@ public class Target {
         case HIT:
             System.out.println("You hit it! Well done!");
             System.out.print("Would you like to play again?");
-            if(System.console().readLine().equals("n")){
-                finished=true;
+            if(System.console().readLine().equals("n")){    //continues asking for input until the user has hit the target and
+                finished=true;                              //the user has keyed n to as an answer to play again
             }
             break;
             }

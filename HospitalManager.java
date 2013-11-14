@@ -38,6 +38,7 @@ public class HospitalManager {
        // patientListStart=patientListStart.getNext();
        // prettyPrint();
         System.out.println("Total number of patients is: "+listLength());
+        System.out.println("Total number of patients is: "+listLength1(firstPatient,0));
 
     }
 
@@ -58,6 +59,21 @@ public class HospitalManager {
             counter++;
         }
        return counter;
+
+    }
+    //this one is not working recursively-need to look into it further
+    public int listLength1(Patient nextCountedPatient, int counter){
+           // int counter=0;
+            if(nextCountedPatient==null){
+              return counter;
+        }
+        else{
+              listLength1(nextCountedPatient.getNext(),counter++);
+                counter++;
+                System.out.println("each iteration gives: "+counter);
+        }
+
+        return counter;
 
     }
 

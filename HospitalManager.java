@@ -24,13 +24,20 @@ public class HospitalManager {
         patientListStart.addPatient(thirdPatient);
         Patient fourthPatient=new Patient("Gemma Johnston", 67, "meningitus");
         patientListStart.addPatient(fourthPatient);
+        Patient fifthPatient=new Patient("Francisco D'Anconia", 34, "broken heart");
+        patientListStart.addPatient(fifthPatient);
+        Patient sixthPatient=new Patient("John Galt", 36, "ambition");
+        patientListStart.addPatient(sixthPatient);
+        Patient seventhPatient=new Patient("Dagny Taggart", 30, "perfection");
+        patientListStart.addPatient(seventhPatient);
         prettyPrint();
-        patientListStart.deletePatient(thirdPatient);
+      //  patientListStart.deletePatient(thirdPatient);
         //in order to delete the first element of a linked list, you cannot delete it by using the method of looping
         //through the list. Instead, just point the start of the list to the next element in the list and the
         //unlinked element will be discarded
-        patientListStart=patientListStart.getNext();
-        prettyPrint();
+       // patientListStart=patientListStart.getNext();
+       // prettyPrint();
+        System.out.println("Total number of patients is: "+listLength());
 
     }
 
@@ -41,6 +48,17 @@ public class HospitalManager {
             currentPatient=currentPatient.getNext();
         }
         System.out.println();
+    }
+
+    public int listLength(){
+       int counter=0;
+       Patient countNext=patientListStart;
+       while(countNext!=null){
+            countNext=countNext.getNext();
+            counter++;
+        }
+       return counter;
+
     }
 
 }

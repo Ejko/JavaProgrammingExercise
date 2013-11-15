@@ -65,7 +65,7 @@ public class DoubleHospitalManager {
             finalPatient=finalPatient.getNext();
         }
         DoublePatient currentPatient=finalPatient;
-        while(currentPatient.getPrevious()!=null){
+        while(currentPatient!=null){
             currentPatient.Print();
             currentPatient=currentPatient.getPrevious();
         }

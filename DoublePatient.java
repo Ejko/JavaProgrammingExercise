@@ -35,17 +35,19 @@ public class DoublePatient {
              return false;
         }
         else if(this.nextPatient.name.equals(patientToDelete.name)){
-            this.nextPatient.previousPatient=this;
             this.nextPatient=nextPatient.nextPatient;
+            if(this.nextPatient!=null){
 
-        return true;
+                this.nextPatient.previousPatient=this;
+
+            }
+            return true;
         }
-
         else{
             return  this.nextPatient.deletePatient(patientToDelete);
         }
 
-        }
+     }
     public DoublePatient getNext(){
             return nextPatient;
     }
@@ -63,6 +65,11 @@ public class DoublePatient {
     }
     public String getIllness(){
             return illness;
+    }
+
+    @Override
+    public String toString() {
+        return "DoublePatient(" + this.getName() + ")";
     }
 
     public void Print(){

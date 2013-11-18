@@ -8,4 +8,17 @@ package SupermarketQueue;
  * To change this template use File | Settings | File Templates.
  */
 public class Supermarket {
+
+    PersonQueue queue=new PersonQueueImpl();
+
+    public void addPerson(Person p){
+        queue.insert(p);
+    }
+
+    public Person servePerson(){
+
+        return queue.retrieve();
+
+    }
+
 }

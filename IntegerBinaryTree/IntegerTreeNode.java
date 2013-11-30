@@ -124,14 +124,18 @@ public class IntegerTreeNode {
         return "["+this.value+left+right+"]";
     }
 
-    public int depth(IntegerTreeNode node){
-           if(node==null){
-               return 0;
-           }
+    public int depth(){
 
-           else{
-              return 1+max(depth(node.leftNode),depth(node.rightNode));
-           }
+        if (this.leftNode == null && this.rightNode == null){
+            return 1;
+        } else if (this.leftNode == null) {
+            return 1 + this.rightNode.depth();
+        } else if (this.rightNode == null) {
+            return 1 + this.leftNode.depth();
+        } else {
+            return 1 + Math.max(this.leftNode.depth(), this.rightNode.depth());
+        }
+//
         }
     public int max(int num1,int num2){
         if(num1>num2){

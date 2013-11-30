@@ -24,6 +24,10 @@ public class IntegerTreeNode {
         this.rightNode=null;
     }
 
+    public int getValue(){
+        return value;
+    }
+
     public void add(int newNumber){
         if(newNumber>this.value){   //check if number to be added is bigger than the current value
             if(rightNode==null){   //if yes, check if the right node is null-meaning the current one was a leaf
@@ -66,7 +70,6 @@ public class IntegerTreeNode {
         }
 
     }
-
     public int getMax(){
         if(this.rightNode==null){
             return this.value;
@@ -74,8 +77,8 @@ public class IntegerTreeNode {
         else{
            return rightNode.getMax();
         }
-    }
 
+    }
     public int getMin(){
         if(this.leftNode==null){
             return this.value;
@@ -84,4 +87,63 @@ public class IntegerTreeNode {
             return leftNode.getMin();
         }
     }
-}
+    public String toString1(){
+        String left="";
+        String right="";
+        if(this.leftNode==null){
+            left="[]";
+        }
+        else{
+            left=this.leftNode.toString1();
+        }
+        if(this.rightNode==null){
+            right="[]";
+        }
+        else{
+            right=this.rightNode.toString1();
+        }
+        return "[ "+this.value+" L "+left+" R "+right+" ]";
+      }
+
+    //a version of toString1() which does not specify which node is left or right and does not print empty
+    public String toString2(){
+        String left="";
+        String right="";
+        if(this.leftNode==null){
+            left="";
+        }
+        else{
+            left=this.leftNode.toString2();
+        }
+        if(this.rightNode==null){
+            right="";
+        }
+        else{
+            right=this.rightNode.toString2();
+        }
+        return "["+this.value+left+right+"]";
+    }
+
+    public int depth(IntegerTreeNode node){
+           if(node==null){
+               return 0;
+           }
+
+           else{
+              return 1+max(depth(node.leftNode),depth(node.rightNode));
+           }
+        }
+    public int max(int num1,int num2){
+        if(num1>num2){
+            return num1;
+        }
+        else{
+            return num2;
+        }
+    }
+
+
+    }
+
+
+

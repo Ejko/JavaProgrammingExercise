@@ -8,4 +8,8 @@ package IntegerBinaryTree;
  * To change this template use File | Settings | File Templates.
  */
 public class Tree {
+
+    private IntegerTreeNode root=null;
+
+
 }

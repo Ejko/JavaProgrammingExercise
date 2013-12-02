@@ -27,24 +27,18 @@ public class CourseManager {
            Student andy=new Student("Andy", 23, "physics");
             System.out.println("List of students before deletion: ");
             courses.printList();
-           // courses.deleteStudent(jimmy);
-            courses.deleteStudent(potter);
+            courses.deleteStudent(jimmy);
+           // courses.deleteStudent(potter);
             //courses.deleteStudent(andy);
             System.out.println("List of students after deletion: ");
             courses.printList();
-
-
       }
-
-      //public void launch(){
-      //       }
 
        public Student addStudent(String name, int age, String course){
            Student newStudent=new Student(name, age, course);
            if(first==null){
               first=newStudent;
               first.setNext(first);
-            //   System.out.println("THe first student is: "+ first);
               return first;
            }
 
@@ -54,9 +48,7 @@ public class CourseManager {
                }
                Student nextStudentToAdd=aux.setNext(newStudent);
                nextStudentToAdd.setNext(first);
-
-               //System.out.println("The student added is: "+ newStudent);
-                return nextStudentToAdd;
+               return nextStudentToAdd;
                }
 
         public void deleteStudent(Student s){
@@ -73,12 +65,11 @@ public class CourseManager {
         }
             //if(current.getNext()==first&&first.getName().equals(s.getName())){
              // current.setNext(current.getNext().getNext());
-             // System.out.print("The first deleted element is: ");
-             // current.printNode();
-           // }
+            //System.out.print("The first deleted element is: ");
+             //current.printNode();
+            }
 
            // return;
-       }
 
         public void printList(){
             Student current=first;

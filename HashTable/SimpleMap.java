@@ -19,10 +19,10 @@ public interface SimpleMap {
     void put(int key, String name);
 
     /**
-     * Returns the name associated with that key
+     * Returns all the names associated with that key
      * or null if there is none
      */
-    String get(int key);
+    MapNode get(int key);
 
     /**
      * Removes a name from the map

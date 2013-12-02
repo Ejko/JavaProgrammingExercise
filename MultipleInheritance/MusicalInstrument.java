@@ -8,4 +8,8 @@ package MultipleInheritance;
  * To change this template use File | Settings | File Templates.
  */
 public class MusicalInstrument {
+
+    public void play(){
+      System.out.println("Playing instrument");
+    }
 }

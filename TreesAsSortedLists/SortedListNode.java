@@ -8,4 +8,27 @@ package TreesAsSortedLists;
  * To change this template use File | Settings | File Templates.
  */
 public class SortedListNode {
+
+    private int value;
+    private SortedListNode nextNode;
+
+    public SortedListNode(int n){
+        this.value=n;
+        this.nextNode=null;
+    }
+
+    public int getValue(){
+        return this.value;
+    }
+    public SortedListNode getNext(){
+        return this.nextNode;
+    }
+
+    public void setValue(int n){
+        this.value=n;
+    }
+
+    public void setNext(SortedListNode s){
+        this.nextNode=s;
+    }
 }

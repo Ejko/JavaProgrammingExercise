@@ -8,4 +8,8 @@ package MultipleInheritance;
  * To change this template use File | Settings | File Templates.
  */
 public class WoodenObject {
+
+    public void burn(){
+        System.out.println("Burn, burn");
+    }
 }

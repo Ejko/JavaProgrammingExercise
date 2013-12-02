@@ -146,8 +146,33 @@ public class IntegerTreeNode {
         }
     }
 
-
+    public void remove(int n){
+        if(this.leftNode!=null){
+            if(this.leftNode.value==n&&this.leftNode.isLeaf()){
+                this.leftNode=null;
+            }
+            else{
+                this.leftNode.remove(n);
+            }
+        }
+        if(this.rightNode!=null){
+             if(this.rightNode.value==n&&this.rightNode.isLeaf()){
+                this.rightNode=null;
+             }
+            else{
+                 this.rightNode.remove(n);
+             }
+         }
     }
+    public boolean isLeaf(){
+        if(this.leftNode==null&&this.rightNode==null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+  }
 
 
 

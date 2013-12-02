@@ -7,5 +7,14 @@ package Day10Extension;
  * Time: 20:15
  * To change this template use File | Settings | File Templates.
  */
-public class RestrictedSmartPhone {
+public class RestrictedSmartPhone extends MobilePhone {
+
+    public RestrictedSmartPhone(String[] numbers, String brand) {
+        super(numbers, brand);
+    }
+
+    //@Override
+    //private void playGame(String name){
+      //  System.out.println("Would you like to play" + name + " Loading...");
+   // }
 }

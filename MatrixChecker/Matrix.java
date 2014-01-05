@@ -1,3 +1,5 @@
+package MatrixChecker;
+
 import java.util.Arrays;
 
 /**

@@ -1,3 +1,5 @@
+package SinglyLinkedList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -6,7 +8,7 @@
  * To change this template use File | Settings | File Templates.
  */
 public class HospitalManager {
-    //this is the element of type Patient where the linked list starts; initialized to null
+    //this is the element of type SinglyLinkedList.Patient where the linked list starts; initialized to null
     private Patient patientListStart=null;
 
     public static void main(String [] args){

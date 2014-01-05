@@ -1,3 +1,5 @@
+package EmployeeArray;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya

@@ -1,3 +1,5 @@
+package MatrixChecker
+
 MatrixChecker matrix1=new MatrixChecker(7);
 MatrixChecker matrix2=new MatrixChecker(3,4);
 

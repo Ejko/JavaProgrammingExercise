@@ -28,5 +28,10 @@ public interface BasicStack {
      */
     boolean empty();
 
+    /**
+     * Returns the top element of the stack without removing it
+     */
+    int peek();
+
 }
 

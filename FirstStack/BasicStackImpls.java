@@ -47,7 +47,7 @@ public class BasicStackImpls implements BasicStack {
             popValue=lastNode.getValue();
             lastNode=null;
             size--;
-            printPop(popValue);
+           // printPop(popValue);
             return popValue;
         }
         else if(lastNode.getNext()==null){
@@ -55,9 +55,21 @@ public class BasicStackImpls implements BasicStack {
             lastNode=lastNode.getPrevious();
             lastNode.setNextNode(null);
             size--;
-            printPop(popValue);
+         //   printPop(popValue);
         }
         return popValue;
+    }
+
+    @Override
+    public int peek(){
+        int result=0;
+        if(empty()){
+            System.out.println("Stack is empty");
+        }
+        else{
+            result=lastNode.getValue();
+        }
+     return result;
     }
 
     @Override

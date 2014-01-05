@@ -7,6 +7,14 @@ package GenericList;
  * Time: 17:51
  * To change this template use File | Settings | File Templates.
  */
+
+/**
+ * This interface can be used for the implementation of a generic linked list, which is a dynamic data structure
+ * New items can be added at the end of the list, or at the appropriate location if it is a sorted list
+ * Lists can be singly or doubly linked or circular
+ * This interface uses a generic class type
+ * @param <T>
+ */
 public interface GenericList<T> {
     /**
      * Adds a new element to the list

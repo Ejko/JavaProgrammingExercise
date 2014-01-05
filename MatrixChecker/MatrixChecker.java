@@ -1,3 +1,5 @@
+package MatrixChecker;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya

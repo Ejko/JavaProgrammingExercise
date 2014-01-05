@@ -1,3 +1,5 @@
+package Target_2D_Array;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -100,28 +102,28 @@ public class Target {
     int z=Integer.parseInt((System.console().readLine()));
     Result result=myTarget.fire(x,y,z);
     switch(result){
-        case OUT_OF_RANGE:
+        case Result.OUT_OF_RANGE:
             System.out.println("This shot is way out of range! Try harder.");
             break;
-        case FAIL_LEFT:
+        case Result.FAIL_LEFT:
             System.out.println("You missed! The target is to the left");
             break;
-        case FAIL_RIGHT:
+        case Result.FAIL_RIGHT:
             System.out.println("You missed! The target is to the right");
             break;
-        case FAIL_LOW:
+        case Result.FAIL_LOW:
             System.out.println("You missed! The target is higher");
             break;
-        case FAIL_HIGH:
+        case Result.FAIL_HIGH:
             System.out.println("You missed! The target is lower");
             break;
-        case FAIL_LONG:
+        case Result.FAIL_LONG:
             System.out.println("You missed! The target is closer!");
             break;
-        case FAIL_SHORT:
+        case Result.FAIL_SHORT:
             System.out.println("You missed! The target is farther!");
             break;
-        case HIT:
+        case Result.HIT:
             System.out.println("You hit it! Well done!");
             System.out.print("Would you like to play again?");
             if(System.console().readLine().equals("n")){    //continues asking for input until the user has hit the target and

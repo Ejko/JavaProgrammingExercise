@@ -1,3 +1,5 @@
+package CircularList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -74,10 +76,10 @@ public class CourseManager {
         public void printList(){
             Student current=first;
             while(current.getNext()!=first){
-                System.out.println("Student: " + current.getName() + "; Age: " + current.getAge() + "; Course: " + current.getCourse());
+                System.out.println("CircularList.Student: " + current.getName() + "; Age: " + current.getAge() + "; Course: " + current.getCourse());
                 current=current.getNext();
             }
-            System.out.println("Student: " + current.getName() + "; Age: " + current.getAge() + "; Course: " + current.getCourse());
+            System.out.println("CircularList.Student: " + current.getName() + "; Age: " + current.getAge() + "; Course: " + current.getCourse());
             System.out.println("You have reached the end of the list ");
             System.out.println();
         }

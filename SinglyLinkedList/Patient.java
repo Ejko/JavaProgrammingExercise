@@ -1,3 +1,5 @@
+package SinglyLinkedList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -71,7 +73,7 @@ public class Patient {
 
     public void Print(){
 
-    System.out.println("Patient: "+ this.getName());
+    System.out.println("SinglyLinkedList.Patient: "+ this.getName());
     System.out.println("Age: "+ this.getAge());
     System.out.println("Illness: "+ this.getIllness());
        }

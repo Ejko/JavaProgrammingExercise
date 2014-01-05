@@ -7,9 +7,21 @@ package GenericList;
  * Time: 17:54
  * To change this template use File | Settings | File Templates.
  */
+
+/**
+ * Implements a doubly linked list using a generic type class parameter
+ * This class is a super class of SortedListImpl
+ * @param <T>
+ */
 public class GenericListImpl<T> implements GenericList<T> {
-    private ListNode<T> head;
-    private ListNode<T> tail;
+    /**
+     * Fields have been set as protected, to allow subclasses to access them
+     */
+    protected ListNode<T> head;
+    /**
+     * Fields have been set as protected, to allow subclasses to access them
+     */
+    protected ListNode<T> tail;
 
     public void add(T value) {
         ListNode<T> newTail;
@@ -49,7 +61,7 @@ public class GenericListImpl<T> implements GenericList<T> {
               }
           }
           else{
-              current=current.getNext();        //keep looping through the list until the desired value is found or end is reached
+              current=current.getNext();//keep looping through the list until the desired value is found or end is reached
              }
           }
       }

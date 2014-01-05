@@ -1,3 +1,5 @@
+package CircularList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -38,7 +40,7 @@ public class Student {
         return this.nextStudent;
     }
     public void printNode(){
-        System.out.println("Student: " + this.getName() + "; Age: " + this.getAge() + "; Course: " + this.getCourse());
+        System.out.println("CircularList.Student: " + this.getName() + "; Age: " + this.getAge() + "; Course: " + this.getCourse());
     }
 
 

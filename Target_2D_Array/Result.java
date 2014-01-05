@@ -1,3 +1,5 @@
+package Target_2D_Array;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya

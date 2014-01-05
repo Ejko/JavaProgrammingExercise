@@ -1,3 +1,5 @@
+package DoubleLinkedList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -69,7 +71,7 @@ public class DoublePatient {
 
     @Override
     public String toString() {
-        return "DoublePatient(" + this.getName() + ")";
+        return "DoubleLinkedList.DoublePatient(" + this.getName() + ")";
     }
 
     public void Print(){

@@ -21,7 +21,8 @@ public class DoubleHospitalManager {
     {
 
        DoublePatient patient1=new DoublePatient("James", 40, "uselessness");
-       listStart=patient1;
+       //listStart=patient1;
+        setListHead(patient1);
        DoublePatient patient2=new DoublePatient("Donald", 2, "chilled out");
        listStart.addPatient(patient2);
        DoublePatient patient3=new DoublePatient("Ronald", 4, "obesity");
@@ -47,6 +48,22 @@ public class DoubleHospitalManager {
         forwardPrint();
         backwardPrint();
 
+    }
+
+    public void setListHead(DoublePatient patient){
+        this.listStart=patient;
+
+    }
+
+    public void deleteListHead(){
+
+        this.listStart=listStart.getNext();
+        listStart.setPrevious(null);
+
+    }
+
+    public DoublePatient getListHead(){
+        return this.listStart;
     }
 
     public void forwardPrint(){

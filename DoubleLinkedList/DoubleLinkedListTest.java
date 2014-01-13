@@ -119,6 +119,21 @@ public class DoubleLinkedListTest {
         assertEquals(expectedResult, actualResult);
 
     }
+    /**
+     * Adding a first element then deleting it then adding another one
+     */
+    @Test
+    public void addRemoveReplaceHeadTest(){
+        DoublePatient pat1=new DoublePatient("Sam", 40, "high blood pressure");
+        dhm.setListHead(pat1);
+        dhm.deleteListHead();
+
+        DoublePatient pat2=new DoublePatient("Jimmy", 34, "broken leg");
+        dhm.setListHead(pat2);
+
+        assertTrue(dhm.getListHead().getName().equals("Jimmy"));
+
+    }
 
     /**
      * Testing patient name output to string

@@ -16,10 +16,8 @@ public class DoubleHospitalManager {
         dhm.launch();
 
     }
-
     public void launch()
     {
-
        DoublePatient patient1=new DoublePatient("James", 40, "uselessness");
        //listStart=patient1;
         setListHead(patient1);
@@ -47,25 +45,30 @@ public class DoubleHospitalManager {
 
         forwardPrint();
         backwardPrint();
-
     }
 
     public void setListHead(DoublePatient patient){
         this.listStart=patient;
-
     }
 
     public void deleteListHead(){
 
-        this.listStart=listStart.getNext();
-        listStart.setPrevious(null);
+        if(this.listStart==null){
+            System.out.println("List is empty");
+        }
+        else if(this.listStart.getNext()==null){
+            System.out.println("No other elements in the list");
+        }
+        else{
+            this.listStart=listStart.getNext();
+            listStart.setPrevious(null);
+        }
+
 
     }
-
     public DoublePatient getListHead(){
         return this.listStart;
     }
-
     public void forwardPrint(){
         System.out.println("Now pretty print runs");
         DoublePatient currentPatient=listStart;

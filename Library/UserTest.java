@@ -61,17 +61,17 @@ public class UserTest {
     }
     @Test
     public void registerTest(){
-        Library lib=new Library();
-        User newUser=new UserImpl("Jonnie");
+        Library lib=new LibraryImpl("Central");
+        User newUser=new UserImpl("Jonnie Cash");
         newUser.register(lib);
 
-        assertTrue(newUser.getLibraryID()==13);
+        assertTrue(newUser.getLibraryID()==950);
     }
 
     @Test
     public void getLibraryTest(){
 
-        Library lib=new Library();
+        Library lib=new LibraryImpl("Central");
         User newUser=new UserImpl("Jonnie");
 
         assertTrue(newUser.getLibrary(lib).equals("Name"));

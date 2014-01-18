@@ -12,6 +12,7 @@ package Library;
  * This class implements the User interface
  * used to create new users
  */
+
 public class UserImpl implements User {
 
     private String userName;
@@ -44,20 +45,20 @@ public class UserImpl implements User {
      * This method assigns a unique library ID to the user
      * @param lib the library object used for registration
      */
-    @Override
-    public void register(Library lib){
-        setLibraryID(lib.getId());
-    }
+   @Override
+   public void register(Library lib){
+     setLibraryID(lib.getID(userName));
+   }
 
     /**
      * Takes in a library object and returns the name of the library
      * @param lib
      * @return the library name
      */
-    @Override
-    public String getLibrary(Library lib){
+   @Override
+   public String getLibrary(Library lib){
 
-        return lib.getName();
+       return lib.getLibName();
 
     }
 }

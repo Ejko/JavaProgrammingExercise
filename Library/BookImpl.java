@@ -19,8 +19,9 @@ public class BookImpl implements Book {
 
     private String authorName;
     private String bookTitle;
+    private boolean taken;
 
-    public BookImpl(String author, String title){
+    public BookImpl(String title, String author){
         this.authorName=author;
         this.bookTitle=title;
     }
@@ -33,5 +34,16 @@ public class BookImpl implements Book {
     @Override
     public String getBookTitle() {
         return bookTitle;
+    }
+
+    @Override
+    public boolean isTaken() {
+        return taken;
+    }
+
+    @Override
+    public void setTaken(boolean status) {
+
+        this.taken=status;
     }
 }

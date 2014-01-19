@@ -8,13 +8,14 @@ package Library;
  * To change this template use File | Settings | File Templates.
  */
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LibraryImpl implements Library {
 
     private String name; //library name
     private ArrayList<Book> books;
+    private HashMap<Integer,ArrayList<Book>> borrows; // a hash map to hold all the books borrowed by a user
+
     /**
      * The list of users registered with the library has been implemented as an array
      * Initial size is 1000
@@ -25,13 +26,13 @@ public class LibraryImpl implements Library {
         this.name = name;
         registeredUsers = new String[1000];
         books = new ArrayList<Book>();
+        borrows=new HashMap<Integer,ArrayList<Book>>();
     }
 
     @Override
     public String getLibName() {
         return name;
     }
-
     /**
      * an enum type has been used to allow the max books per user to be specified independently
      *
@@ -41,7 +42,6 @@ public class LibraryImpl implements Library {
     public int getMaxBooksPerUser() {
 
         return MaxBooksPerUser.MAX_BOOKS_PER_USER.getNum();
-
     }
 
     /**
@@ -74,7 +74,6 @@ public class LibraryImpl implements Library {
         registeredUsers[index] = name;
         return index;
     }
-
     @Override
     public void addBook(String title, String author) {
         Book newBook = new BookImpl(title, author);
@@ -84,18 +83,24 @@ public class LibraryImpl implements Library {
             books.add(newBook);
         }
     }
-
     @Override
-    public String takeBook(String title) {
+    public Book takeBook(String title, int userId) {
 
-        String result="";
-        for (int i = 0; i < books.size(); i++) {
-                if(books.get(i)==null){
-
+        Book result=null;
+        for (Book currentBook : books) {
+                if(currentBook==null){
                 }
-                else if(books.get(i).getBookTitle().equals(title)&&!books.get(i).isTaken()){
-                    books.get(i).setTaken(true);
-                    result=books.get(i).getBookTitle();
+                else if(currentBook.getBookTitle().equals(title)&&!currentBook.isTaken()){
+                    currentBook.setTaken(true);
+
+                    ArrayList<Book> booksBorrowedByUser = borrows.get(userId);
+
+                    if(booksBorrowedByUser == null){
+                        booksBorrowedByUser = new ArrayList<Book>();
+                        borrows.put(userId, booksBorrowedByUser);
+                    }
+                    booksBorrowedByUser.add(currentBook);
+                    result=currentBook;
                 }
                 else{
                     result=null;
@@ -103,7 +108,6 @@ public class LibraryImpl implements Library {
         }
         return result;
     }
-
     @Override
     public void returnBook(Book book) {
         //Checks if the book is actually part of the book catalogue
@@ -114,8 +118,6 @@ public class LibraryImpl implements Library {
         book.setTaken(false);
         }
     }
-
-    @Override
     public Book containsBook(String title) {
         Book contains=null;
         for (int i = 0; i < books.size(); i++) {
@@ -128,7 +130,94 @@ public class LibraryImpl implements Library {
         }
         return contains;
     }
+    @Override
+    public int getReaderCount() {
+        int readerCount=0;
+        for(int i=0; i<registeredUsers.length;i++){
+            if(registeredUsers[i]!=null){
+                readerCount++;
+            }
 
+        }
+        return readerCount;
+    }
+    @Override
+    public int getBookCount() {
+        return books.size();
+    }
+
+    @Override
+    public int getBorrowedBooksCount() {
+        int borrowedBooks=0;
+        for(Book currentBook:books){
+            if(currentBook==null){
+            }
+            else if(currentBook.isTaken()){
+                borrowedBooks++;
+            }
+        }
+        return borrowedBooks;
+    }
+
+    @Override
+    public ArrayList<Book> getBorrowedBooksByUser(int userID) {
+
+        if(borrows.get(userID)==null){
+            return null;
+        }
+        else{
+        return borrows.get(userID);
+        }
+    }
+
+    @Override
+    public String[] getRegisteredUsers() {
+
+        return registeredUsers;
+    }
+
+    @Override
+    public String[] getUsersWithBooks() {
+        String [] usersWithBooks=new String [1000];
+        Set<Integer> borrowerIDs=borrows.keySet();
+        for(int currentRecord: borrowerIDs){
+            for(int i=0; i<registeredUsers.length;i++){
+                if(currentRecord==i){
+                    usersWithBooks[i]=registeredUsers[i];
+                }
+            }
+        }
+        return usersWithBooks;
+    }
+
+    @Override
+    public String nameOfBorrower(String title) {
+        Integer userKey=0;
+        String borrowerName="";
+        Book bookObj=null;
+        for(Book current: books){
+            if(!current.getBookTitle().equals(title)) {
+                continue;
+            }
+
+            bookObj=containsBook(title);
+
+            for(Map.Entry<Integer, ArrayList<Book>> entry: borrows.entrySet()){
+                    ArrayList<Book> borrowedBooks=entry.getValue();
+                    if(borrowedBooks.contains(bookObj)){
+                        userKey=entry.getKey();
+                        System.out.println("User key is:"+userKey);
+                        System.out.println("Book name: "+bookObj.getBookTitle());
+                        borrowerName=registeredUsers[userKey];
+
+                        System.out.println("User in array: "+registeredUsers[userKey]);
+                        return borrowerName;
+                         }
+            }
+        }
+        System.out.println("Borrower Name: "+borrowerName);
+        return null;
+    }
     /**
      * Hashing function used to generate a users ID
      *
@@ -139,6 +228,5 @@ public class LibraryImpl implements Library {
         int longID = s.hashCode();
         return HashUtilities.shortHash(longID);
     }
-
 }
 

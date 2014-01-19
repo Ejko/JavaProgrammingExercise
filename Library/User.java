@@ -8,6 +8,8 @@ package Library;
  * To change this template use File | Settings | File Templates.
  */
 
+import java.util.ArrayList;
+
 /**
  * An interface that identifies a library user class
  */

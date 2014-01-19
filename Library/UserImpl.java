@@ -8,6 +8,8 @@ package Library;
  * To change this template use File | Settings | File Templates.
  */
 
+import java.util.ArrayList;
+
 /**
  * This class implements the User interface
  * used to create new users
@@ -61,4 +63,6 @@ public class UserImpl implements User {
        return lib.getLibName();
 
     }
+
+
 }

@@ -1,5 +1,8 @@
 package Library;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -42,7 +45,7 @@ public interface Library {
      * @param title
      * @return book title being taken or null
      */
-    public String takeBook(String title);
+    public Book takeBook(String title, int userId);
 
     /**
      * Marks a book as not taken
@@ -52,10 +55,45 @@ public interface Library {
     public void returnBook(Book book);
 
     /**
-     * Checks if the library catalogue contains a book
-     * @param title
-     * @return true of false
+     * returns the number of registered users in the library
+     * @return num of users
      */
-    public Book containsBook(String title);
+    public int getReaderCount();
+
+    /**
+     * Number of books at the library
+     * @return number of books
+     */
+    public int getBookCount();
+
+    /**
+     * Number of borrowed books in the library
+     * @return num borrowed books
+     */
+    public int getBorrowedBooksCount();
+
+    /**
+     * returns a list of all books borrowed by a user
+     * @return list of borrowed books
+     */
+    public ArrayList<Book> getBorrowedBooksByUser(int userID);
+
+    /**
+     * a list of all users in the library, borrowing or not
+     */
+    public String [] getRegisteredUsers();
+
+    /**
+     * A list of all users who have borrowed books
+     * @return list of users
+     */
+    public String [] getUsersWithBooks();
+
+    /**
+     * Name of the user borrowing a specific title at the moment
+     * @param title
+     * @return name of the borrower
+     */
+    public String nameOfBorrower(String title);
 
 }

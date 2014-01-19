@@ -37,8 +37,5 @@ public interface Book {
      */
     public void setTaken(boolean status);
 
-
-
-
 }
 

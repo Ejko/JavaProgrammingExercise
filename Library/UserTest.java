@@ -9,6 +9,9 @@ package Library;
  */
 
 import org.junit.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class UserTest {
@@ -75,6 +78,18 @@ public class UserTest {
         User newUser=new UserImpl("Jonnie");
 
         assertTrue(newUser.getLibrary(lib).equals("Name"));
+    }
+
+    @Test
+    public void getBorrowedBooksTest(){
+
+        User newUser=new UserImpl("Gary Smith");
+
+        Library lib=new LibraryImpl("Central");
+        lib.addBook("a", "c");
+        lib.takeBook("a", newUser.getLibraryID());
+
+
     }
 
 

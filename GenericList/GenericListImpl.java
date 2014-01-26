@@ -74,4 +74,27 @@ public class GenericListImpl<T> implements GenericList<T> {
             current=current.getNext();
         }
     }
+
+    public MyIteratingThingy<T> iterate() {
+        return new MyIteratingThingy<T>(head);
+    }
+
+    public class MyIteratingThingy<T> {
+        private ListNode<T> currentNode;
+
+        public MyIteratingThingy(ListNode<T> head) {
+            this.currentNode = head;
+        }
+
+        public T nextValue() {
+            if (currentNode == null) {
+                return null;
+            }
+
+            T value = currentNode.getValue();
+            currentNode = currentNode.getNext();
+            return value;
+        }
+
+    }
 }

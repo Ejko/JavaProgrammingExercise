@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LibraryTest {
 
@@ -139,10 +140,10 @@ public class LibraryTest {
         libTest.takeBook("1",858 );
         libTest.takeBook("2",238);
 
-        ArrayList<Book> bookPerUserExpected=new ArrayList<Book>();
+        List<Book> bookPerUserExpected=new ArrayList<Book>();
         bookPerUserExpected.add(libTest.containsBook("1"));
 
-        ArrayList<Book> actual=libTest.getBorrowedBooksByUser(858);
+        List<Book> actual=libTest.getBorrowedBooksByUser(858);
 
         assertEquals(bookPerUserExpected, actual);
     }
@@ -200,6 +201,29 @@ public class LibraryTest {
         assertEquals("Jimmy", borrowerName);
 
         assertTrue(libTest.nameOfBorrower("1").equals("Jimmy"));
+    }
+
+    /**
+     * Test passed successfully after amending the values of max books in the enum accordingly
+     */
+    @Test
+    public void setMaxBookPolicyTest(){
+        libTest.getID("Jimmy");
+        libTest.getID("Janet");
+        libTest.getID("Petra");
+        libTest.addBook("1", "A");
+        libTest.addBook("2", "B");
+        libTest.addBook("3", "C");
+        libTest.takeBook("1", 858);
+        libTest.takeBook("2", 858);
+        libTest.takeBook("3", 858);
+
+        String [] expected=new String[1000];
+        expected[0]=null;
+        String [] actual=libTest.setMaxBookPolicy();
+
+        assertArrayEquals(expected, actual);
+
     }
 
 

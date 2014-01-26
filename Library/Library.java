@@ -2,6 +2,7 @@ package Library;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,12 +17,20 @@ public interface Library {
      * Checks the maximum books per user to be borrowed at any time
      * @return max number of books possible
      */
-     public int getMaxBooksPerUser();
+   public int getMaxBooksPerUser();
 
     /**
-     * Getter for library name
-     * @return name of the library
+     * Set max books per user
      */
+
+    public void setMaxBooksPerUser(int n);
+
+    public String [] setMaxBookPolicy();
+
+    /**
+     *  @return the name of the library
+     */
+
     public String getLibName();
 
     /**
@@ -76,7 +85,7 @@ public interface Library {
      * returns a list of all books borrowed by a user
      * @return list of borrowed books
      */
-    public ArrayList<Book> getBorrowedBooksByUser(int userID);
+    public List<Book> getBorrowedBooksByUser(int userID);
 
     /**
      * a list of all users in the library, borrowing or not

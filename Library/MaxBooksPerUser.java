@@ -9,7 +9,7 @@ package Library;
  */
 public enum MaxBooksPerUser {
 
-        MAX_BOOKS_PER_USER(5);
+       MAX_BOOKS_PER_USER(2);
 
         private int num;
 

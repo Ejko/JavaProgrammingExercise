@@ -13,8 +13,8 @@ import java.util.*;
 public class LibraryImpl implements Library {
 
     private String name; //library name
-    private ArrayList<Book> books;
-    private HashMap<Integer,ArrayList<Book>> borrows; // a hash map to hold all the books borrowed by a user
+    private List<Book> books;
+    private Map<Integer,List<Book>> borrows; // a hash map to hold all the books borrowed by a user
 
     /**
      * The list of users registered with the library has been implemented as an array
@@ -26,7 +26,7 @@ public class LibraryImpl implements Library {
         this.name = name;
         registeredUsers = new String[1000];
         books = new ArrayList<Book>();
-        borrows=new HashMap<Integer,ArrayList<Book>>();
+        borrows = new HashMap<Integer,List<Book>>();
     }
 
     @Override
@@ -35,25 +35,36 @@ public class LibraryImpl implements Library {
     }
     /**
      * an enum type has been used to allow the max books per user to be specified independently
-     *
-     * @return
+     *@return max books per user
      */
     @Override
     public int getMaxBooksPerUser() {
-
         return MaxBooksPerUser.MAX_BOOKS_PER_USER.getNum();
     }
 
+    @Override
+    public void setMaxBooksPerUser(int n) {
+        MaxBooksPerUser.MAX_BOOKS_PER_USER.setNum(n);
+    }
+    @Override
+    public String [] setMaxBookPolicy(){
+        String [] policyViolators=new String [10];
+        int n=0;
+        for(int i=0; i<registeredUsers.length;i++){
+            if(getBorrowedBooksByUser(i)!=null&&getBorrowedBooksByUser(i).size()>getMaxBooksPerUser()){
+                policyViolators[n]=registeredUsers[i];
+                n++;
+            }
+        }
+        return policyViolators;
+    }
     /**
      * Will return the id of a user provided their name
-     * If user is not registered, an ID will automatically be created
-     * The short hash code of each name is used as an ID
+     * If user is not registered, an ID will automatically be created.The short hash code of each name is used as an ID
      * Note: this will guarantee uniqueness in most cases, better hashing algo is needed
-     *
      * @param name
      * @return ID of the user
      */
-
     @Override
     public int getID(String name) {
 
@@ -63,9 +74,8 @@ public class LibraryImpl implements Library {
             return index;
         } else {
             for (int i = 0; i < registeredUsers.length; i++) {
-                if (registeredUsers[i] == null) {
-
-                } else if (registeredUsers[i].equals(name)) {
+                if (registeredUsers[i] == null) {}
+                else if (registeredUsers[i].equals(name)) {
                     return i;
                 }
             }
@@ -92,9 +102,7 @@ public class LibraryImpl implements Library {
                 }
                 else if(currentBook.getBookTitle().equals(title)&&!currentBook.isTaken()){
                     currentBook.setTaken(true);
-
-                    ArrayList<Book> booksBorrowedByUser = borrows.get(userId);
-
+                    List<Book> booksBorrowedByUser = borrows.get(userId);
                     if(booksBorrowedByUser == null){
                         booksBorrowedByUser = new ArrayList<Book>();
                         borrows.put(userId, booksBorrowedByUser);
@@ -122,7 +130,6 @@ public class LibraryImpl implements Library {
         Book contains=null;
         for (int i = 0; i < books.size(); i++) {
             if(books.get(i)==null){
-
             }
             else if(books.get(i).getBookTitle().equals(title)){
                contains=books.get(i);
@@ -137,7 +144,6 @@ public class LibraryImpl implements Library {
             if(registeredUsers[i]!=null){
                 readerCount++;
             }
-
         }
         return readerCount;
     }
@@ -145,7 +151,6 @@ public class LibraryImpl implements Library {
     public int getBookCount() {
         return books.size();
     }
-
     @Override
     public int getBorrowedBooksCount() {
         int borrowedBooks=0;
@@ -158,9 +163,8 @@ public class LibraryImpl implements Library {
         }
         return borrowedBooks;
     }
-
     @Override
-    public ArrayList<Book> getBorrowedBooksByUser(int userID) {
+    public List<Book> getBorrowedBooksByUser(int userID) {
 
         if(borrows.get(userID)==null){
             return null;
@@ -175,7 +179,6 @@ public class LibraryImpl implements Library {
 
         return registeredUsers;
     }
-
     @Override
     public String[] getUsersWithBooks() {
         String [] usersWithBooks=new String [1000];
@@ -189,7 +192,6 @@ public class LibraryImpl implements Library {
         }
         return usersWithBooks;
     }
-
     @Override
     public String nameOfBorrower(String title) {
         Integer userKey=0;
@@ -199,20 +201,14 @@ public class LibraryImpl implements Library {
             if(!current.getBookTitle().equals(title)) {
                 continue;
             }
-
             bookObj=containsBook(title);
-
-            for(Map.Entry<Integer, ArrayList<Book>> entry: borrows.entrySet()){
-                    ArrayList<Book> borrowedBooks=entry.getValue();
+            for(Map.Entry<Integer, List<Book>> entry: borrows.entrySet()){
+                    List<Book> borrowedBooks=entry.getValue();
                     if(borrowedBooks.contains(bookObj)){
                         userKey=entry.getKey();
-                        System.out.println("User key is:"+userKey);
-                        System.out.println("Book name: "+bookObj.getBookTitle());
                         borrowerName=registeredUsers[userKey];
-
-                        System.out.println("User in array: "+registeredUsers[userKey]);
                         return borrowerName;
-                         }
+                    }
             }
         }
         System.out.println("Borrower Name: "+borrowerName);
@@ -220,7 +216,6 @@ public class LibraryImpl implements Library {
     }
     /**
      * Hashing function used to generate a users ID
-     *
      * @param s
      * @return short hash( between 1 and 1000) of the name
      */

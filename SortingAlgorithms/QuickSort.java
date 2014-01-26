@@ -15,7 +15,7 @@ public class QuickSort {
 
     public static <T extends Comparable<T>> void  quickSort(List<T> newList){
 
-        if(newList.size()<=1){
+        if(newList.size()<=1){      //nothing happens if the list if of size less than 1; already sorted
             return;
         }
         sortUtil(newList,0, newList.size()-1);
@@ -46,13 +46,13 @@ public class QuickSort {
             }
         }
 
-        swap(l, rightEnd, list);
+        swap(l, rightEnd, list);    //swapping the pivot with the left Index, to place it in the correct location
 
-        sortUtil(list,leftEnd, l-1);
-        sortUtil(list, l+1,rightEnd);
+        sortUtil(list,leftEnd, l-1);    //recursive call on list< pivot
+        sortUtil(list, l+1,rightEnd);   //recursive call on list>pivot
 
     }
-
+    //helper function for swapping the elements in positions of the list
     public static <T> void swap(int a, int b, List<T> list) {
         T temp = list.get(a);
         list.set(a, list.get(b));

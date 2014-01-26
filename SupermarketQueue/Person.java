@@ -26,6 +26,14 @@ public class Person {
         return nextPerson;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
 
 }
 

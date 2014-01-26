@@ -20,5 +20,12 @@ public interface PersonQueue {
      */
     Person retrieve();
 
+    /**
+     * views name of a person inserted into the queue or retrieved from the queue
+     */
+    String viewPerson(Person person);
+
+
     }
+
 

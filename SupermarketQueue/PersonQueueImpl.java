@@ -33,6 +33,12 @@ public class PersonQueueImpl implements PersonQueue {
         start=start.getNext();
         return p;
     }
+
+    @Override
+    public String viewPerson(Person person){
+
+        return person.getName();
+    }
     public static void main(String [] args){
 
         PersonQueue q=new PersonQueueImpl();

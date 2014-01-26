@@ -9,8 +9,8 @@ package UpcastingDowncasting;
  */
 public class RestrictedSmartPhone extends MobilePhone {
 
-    public RestrictedSmartPhone(String[] numbers, String brand) {
-        super(numbers, brand);
+    public RestrictedSmartPhone(String[] numbers) {
+        super(numbers);
     }
 
     //@Override

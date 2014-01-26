@@ -18,7 +18,7 @@ public class PhoneLauncher {
     public void launch(){
         String [] numbers={"123", "345", "678", "978", "109"};
 
-        SmartPhone nexus=new SmartPhone(numbers, "Nexus");
+        SmartPhone nexus=new SmartPhone(numbers);
         nexus.browseWeb("google.co.uk");
         System.out.println("The position you are at is: "+ nexus.findPosition());
         nexus.call("12345");
@@ -27,7 +27,7 @@ public class PhoneLauncher {
         nexus.printLastNumbers();
         nexus.call("001243654");
         nexus.call("53896452");
-        System.out.println(nexus.getBrand());
+
 
 
     }

@@ -9,15 +9,15 @@ package UpcastingDowncasting;
  */
 public class OldPhone implements Phone {
 
-    private String brand=null;
+    //private String brand=null;
 
-    public OldPhone(String brand){
-        this.brand=brand;
-    }
+    //public OldPhone(String brand){
+       // this.brand=brand;
+   // }
 
-    public String getBrand(){
-        return brand;
-    }
+   // public String getBrand(){
+     //   return brand;
+  //  }
     @Override
     public void call(String number) {
 

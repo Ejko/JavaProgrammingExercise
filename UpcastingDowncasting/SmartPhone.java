@@ -9,9 +9,8 @@ package UpcastingDowncasting;
  */
 public class SmartPhone extends MobilePhone {
 
-    public SmartPhone(String[] numbers,String brand) {
-
-        super(numbers, brand);
+    public SmartPhone(String[] numbers) {
+       super(numbers);
 
     }
     public void browseWeb(String webAddress){

@@ -102,28 +102,28 @@ public class Target {
     int z=Integer.parseInt((System.console().readLine()));
     Result result=myTarget.fire(x,y,z);
     switch(result){
-        case Result.OUT_OF_RANGE:
+        case OUT_OF_RANGE:
             System.out.println("This shot is way out of range! Try harder.");
             break;
-        case Result.FAIL_LEFT:
+        case FAIL_LEFT:
             System.out.println("You missed! The target is to the left");
             break;
-        case Result.FAIL_RIGHT:
+        case FAIL_RIGHT:
             System.out.println("You missed! The target is to the right");
             break;
-        case Result.FAIL_LOW:
+        case FAIL_LOW:
             System.out.println("You missed! The target is higher");
             break;
-        case Result.FAIL_HIGH:
+        case FAIL_HIGH:
             System.out.println("You missed! The target is lower");
             break;
-        case Result.FAIL_LONG:
+        case FAIL_LONG:
             System.out.println("You missed! The target is closer!");
             break;
-        case Result.FAIL_SHORT:
+        case FAIL_SHORT:
             System.out.println("You missed! The target is farther!");
             break;
-        case Result.HIT:
+        case HIT:
             System.out.println("You hit it! Well done!");
             System.out.print("Would you like to play again?");
             if(System.console().readLine().equals("n")){    //continues asking for input until the user has hit the target and

@@ -26,7 +26,7 @@ public interface GenericMap<K, V> {
      * Returns the name associated with that key
      * or null if there is none
      */
-    V get(K key);
+    void get(K key);
 
     /**
      * Removes a name from the map

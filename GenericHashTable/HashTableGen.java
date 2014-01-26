@@ -8,4 +8,22 @@ package GenericHashTable;
  * To change this template use File | Settings | File Templates.
  */
 public class HashTableGen {
+
+    public static void main(String [] args){
+
+        HashTableGen generator=new HashTableGen();
+        generator.launch();
+    }
+
+    public void launch(){
+
+        GenericMap<String, String> mapper=new HashTableImpl<String, String>();
+        mapper.put("A", "apple");
+        mapper.put("A", "august");
+        mapper.put("A", "aubergine");
+        mapper.put("C", "cockroach");
+
+        mapper.get("A");
+        mapper.remove("C");
+    }
 }

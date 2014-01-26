@@ -7,5 +7,15 @@ package NoahsArk;
  * Time: 20:58
  * To change this template use File | Settings | File Templates.
  */
-public class Animal {
+public abstract class Animal {
+
+    private String name;
+
+    public Animal(String name){
+        this.name=name;
+    }
+
+
+    public abstract String makeSound();
+
 }

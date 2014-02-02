@@ -32,7 +32,7 @@ public class HospitalManager {
         patientListStart.addPatient(sixthPatient);
         Patient seventhPatient=new Patient("Dagny Taggart", 30, "perfection");
         patientListStart.addPatient(seventhPatient);
-        removeFirstElement();
+        deleteListHead();
         prettyPrint();
         System.out.println("Total number of patients is: "+listLength());
 
@@ -57,12 +57,18 @@ public class HospitalManager {
        return counter;
 
     }
+    public void deleteListHead(){
 
-    public void removeFirstElement(){       //a special separate method is required to take care of the first element removal
-        patientListStart=patientListStart.getNext();
-
+        if(this.patientListStart==null){
+            System.out.println("List is empty");
+        }
+        else if(this.patientListStart.getNext()==null){
+            System.out.println("No other elements in the list");
+        }
+        else{
+            this.patientListStart=patientListStart.getNext();
+        }
     }
-
  }
 
 

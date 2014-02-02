@@ -14,26 +14,23 @@ package FirstStack;
  */
 public class BasicStackImpls implements BasicStack {
 
-    private StackNode firstNode=null;
     private StackNode lastNode=null;
     private int size=0;     //used to keep track of the size of the stack
 
     @Override
     public void push(StackNode s) {
         System.out.println("Pushing "+ s.getValue()+ "...");
-            if(firstNode==null){
-            firstNode=s;
+            if(lastNode==null){
             lastNode=s;
             size++;
         }
         else if(lastNode.getNext()==null){
-             StackNode e=lastNode;
+             StackNode e=lastNode;      //temp variable to store lastNode
              lastNode.setNextNode(s);
              lastNode=lastNode.getNext();
              lastNode.setPrevious(e);
              size++;
         }
-
     }
 
     @Override
@@ -43,11 +40,10 @@ public class BasicStackImpls implements BasicStack {
         if(empty()){
             System.out.println("Stack is empty");
              }
-        else if(lastNode.getPrevious()==null){
+        else if(lastNode.getPrevious()==null){ //only 1 elem in stack
             popValue=lastNode.getValue();
             lastNode=null;
             size--;
-           // printPop(popValue);
             return popValue;
         }
         else if(lastNode.getNext()==null){

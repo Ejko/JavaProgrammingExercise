@@ -9,23 +9,35 @@ package RecursionII;
  */
 public class Palindrome {
 
-    public String reversal(String word){
-        if(word.length()<=1){
-            return word;
+
+    public String palindromeConvert(String str){
+        if(str.length()==0){
+            return "";
+        }
+        else if(str.length()==1){
+            return str;
         }
         else{
-            String result= reversal(word.substring(1)) + word.charAt(0);
-            return result;
+            return str.substring(str.length()-1)+palindromeConvert(str.substring(0, str.length() - 1));
         }
     }
 
-    public boolean Palindrome(String word){
-        return word.equals(reversal(word));
+    public boolean isPalindrome(String str){
+
+        if(palindromeConvert(str).equals(str)){
+            return true;
+        }
+
+        else{
+
+            return false;
+        }
+
     }
 
     public static void main(String [] args){
 
-        Palindrome my=new Palindrome();
-        System.out.println(my.Palindrome("mama"));
+        Palindrome paly=new Palindrome();
+        System.out.println(paly.isPalindrome("madam"));
     }
 }

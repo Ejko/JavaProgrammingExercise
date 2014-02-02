@@ -20,7 +20,7 @@ public class ListUtilities {
            previous=current;
            }
            else{
-               previous.setNext(current);//otherwise, previ
+               previous.setNext(current);//previous is updated to reflect the back end of the list
                previous=current;
            }
 
@@ -124,8 +124,8 @@ public class ListUtilities {
             int [] arraySorted={7,2,5,10,34,12,0};
             IntegerNode list = convertToList(arraySorted);
             printList(list);
-            list = BubbleSort(list);
-            System.out.println("Sorted list:");
+           // list = BubbleSort(list);
+           // System.out.println("Sorted list:");
             printList(list);
 
     }

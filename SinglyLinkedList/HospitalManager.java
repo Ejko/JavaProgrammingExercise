@@ -32,15 +32,9 @@ public class HospitalManager {
         patientListStart.addPatient(sixthPatient);
         Patient seventhPatient=new Patient("Dagny Taggart", 30, "perfection");
         patientListStart.addPatient(seventhPatient);
+        removeFirstElement();
         prettyPrint();
-      //  patientListStart.deletePatient(thirdPatient);
-        //in order to delete the first element of a linked list, you cannot delete it by using the method of looping
-        //through the list. Instead, just point the start of the list to the next element in the list and the
-        //unlinked element will be discarded
-       // patientListStart=patientListStart.getNext();
-       // prettyPrint();
         System.out.println("Total number of patients is: "+listLength());
-        System.out.println("Total number of patients is: "+listLength1(firstPatient,0));
 
     }
 
@@ -63,23 +57,13 @@ public class HospitalManager {
        return counter;
 
     }
-    //this one is not working recursively-need to look into it further
-    public int listLength1(Patient nextCountedPatient, int counter){
-           // int counter=0;
-            if(nextCountedPatient==null){
-              return counter;
-        }
-        else{
-              listLength1(nextCountedPatient.getNext(),counter++);
-                counter++;
-                System.out.println("each iteration gives: "+counter);
-        }
 
-        return counter;
+    public void removeFirstElement(){       //a special separate method is required to take care of the first element removal
+        patientListStart=patientListStart.getNext();
 
     }
 
-}
+ }
 
 
 

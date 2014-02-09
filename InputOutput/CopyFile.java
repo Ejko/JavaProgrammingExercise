@@ -27,13 +27,13 @@ public class CopyFile {
 
         try{
             in=new BufferedReader(new FileReader(srcFile));
-            if(dstFile.exists()){
+            if(dstFile.exists()){       //checks if destination file exists
                 System.out.print("Would you like to overwrite the file(y/n)?");
                 String response=System.console().readLine();
-                if(response.equals("y")){
+                if(response.equals("y")){       //overwrite file
                     out=new PrintWriter(new FileWriter(dstFile));}
                 else{
-                    return;
+                    return;         //if n-return as copying will not take place
                 }
             }
 
@@ -60,7 +60,7 @@ public class CopyFile {
 
     }
 
-    private void close(Closeable read){
+    private void close(Closeable read){     //using closable to allow for both read and write buffers to be closed
         try{
             if(read!=null){
                 read.close();

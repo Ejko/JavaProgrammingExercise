@@ -31,7 +31,9 @@ public class IntegerList {
        sorted=false;
    }
 
-   public synchronized int get(int i){
+   public /*synchronized*/ int get(int i){
+       //the get method will wait until list is sorted before returning
+       //not sure if we need the synchronized here
        int item=0;
        while(!sorted){
            //System.out.print("...");
@@ -72,11 +74,12 @@ public class IntegerList {
     private void stop(){
         this.running=false;
     }
-
+   //embedded class which implements the Runnable object that calls the sort method
    private class IntegerSorter implements Runnable{
         @Override
         public void run() {
               synchronized (this){
+                  //need to check if it is correct that it is synchronized to IntegerSorter
               while(running){
                 sort_method();
               }

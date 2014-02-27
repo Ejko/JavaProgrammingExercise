@@ -14,13 +14,12 @@ import java.util.Calendar;
     /**
      * An implementation of the echo exception
      */
-    public interface EchoDateService extends Remote {
+    public interface DateService extends Remote {
 
         /**
          * Answers requests for the date and time with current date and time
-         * @param date that the server
-         * @return the same string passed as a parameter
+         * @return current time and date
          */
 
-        public String dataGetter(Calendar date) throws RemoteException;
+        public Calendar dateGetter() throws RemoteException;
     }

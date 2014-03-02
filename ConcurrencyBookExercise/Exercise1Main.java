@@ -1,5 +1,8 @@
 package ConcurrencyBookExercise;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * Created with IntelliJ IDEA.
  * User: liliya
@@ -10,9 +13,10 @@ package ConcurrencyBookExercise;
 public class Exercise1Main {
 
     public static void main(String [] args){
-
+        ExecutorService exec= Executors.newCachedThreadPool();
         for(int i=0; i<5; i++){
-            new Thread(new Exercise1()).start();
+           exec.execute(new Exercise1());
         }
+        exec.shutdown();
     }
 }

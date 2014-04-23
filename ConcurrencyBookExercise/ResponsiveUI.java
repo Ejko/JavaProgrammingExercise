@@ -22,7 +22,7 @@ public class ResponsiveUI extends Thread {
     }
 
     public static void main(String [] args) throws Exception{
-        new ResponsiveUI(); //allows for this to run in the background    
+        new ResponsiveUI(); //allows for this to run in the background
         System.in.read();
         System.out.println(d); //Shows progress
     }

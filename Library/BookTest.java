@@ -26,6 +26,8 @@ public class BookTest {
         Book testBook=new BookImpl("Joyce", "Ulysses");
         String expected="Ulysses";
         String result=testBook.getBookTitle();
+
+        assertEquals(expected, result);
     }
 
 

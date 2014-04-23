@@ -7,5 +7,6 @@ package Exceptionhandling;
  * Time: 17:36
  * To change this template use File | Settings | File Templates.
  */
-public class SimpleRunTimeException {
+public class SimpleRunTimeException extends RuntimeException {
+
 }

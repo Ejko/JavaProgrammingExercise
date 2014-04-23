@@ -7,5 +7,11 @@ package Exceptionhandling;
  * Time: 17:35
  * To change this template use File | Settings | File Templates.
  */
-public class SimpleCheckedException {
+public class SimpleCheckedException extends Exception {
+
+    public SimpleCheckedException(String s){
+        super(s);
+    }
+
+
 }

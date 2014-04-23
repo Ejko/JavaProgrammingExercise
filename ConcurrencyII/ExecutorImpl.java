@@ -14,18 +14,22 @@ import java.util.concurrent.*;
 public class ExecutorImpl {
 
     private final Queue<Runnable> tasks=new ArrayDeque<Runnable>();
-    final Executor executor;
+    //final Executor executor;
     Runnable active;
+    long duration;
 
-    public Executor(Executor executor) {
-        this.executor = executor;
+    public ExecutorImpl() {
+        //this.executor = executor;
     }
 
     public synchronized void execute(final Runnable r) {
         tasks.offer(new Runnable() {
             public void run() {
                 try {
+                   long startTime=System.nanoTime();
                     r.run();
+                    long endTime=System.nanoTime();
+                    duration=endTime-startTime;
                 } finally {
                     scheduleNext();
                 }
@@ -37,14 +41,18 @@ public class ExecutorImpl {
     }
     protected synchronized void scheduleNext() {
         if ((active = tasks.poll()) != null) {
-            executor.execute(active);
+            this.execute(active);
         }
     }
 
+    public synchronized long getMaxPendingTime(){
+        long maxTime=0;
 
-
-
+        return maxTime;
     }
+
+
+}
 
 
 

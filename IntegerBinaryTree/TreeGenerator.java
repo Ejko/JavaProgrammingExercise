@@ -31,7 +31,7 @@ public class TreeGenerator {
         //System.out.println(root.getMin());
         System.out.println(root.toString2());
 
-       // System.out.println(root.toString2());
+       // System.out.println(root.prettyPrint());
         //System.out.println(root.depth());
         root.remove(3);
         root.remove(18);

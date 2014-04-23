@@ -17,24 +17,10 @@ public class CourseManager {
 
       public static void main(String [] args){
 
-           CourseManager courses=new CourseManager();
-           Student jimmy= courses.addStudent("Jimmy", 18, "biology");
-           Student vlad= courses.addStudent("Vlad", 20, "computer science");
-           Student liliya=courses.addStudent("Liliya", 25, "information systems");
-           Student jennifer=courses.addStudent("Jennifer", 21, "maths");
-           Student lexi=courses.addStudent("Lexi", 23, "geology");
-           Student franco=courses.addStudent("Franco", 19, "human resources");
-           Student darcy=courses.addStudent("Darcy",25, "geography");
-           Student potter=courses.addStudent("Potter", 21, "engineering");
-           Student andy=new Student("Andy", 23, "physics");
-            System.out.println("List of students before deletion: ");
-            courses.printList();
-            courses.deleteStudent(jimmy);
-           // courses.deleteStudent(potter);
-            //courses.deleteStudent(andy);
-            System.out.println("List of students after deletion: ");
-            courses.printList();
       }
+       public Student getFirst(){
+           return first;
+       }
 
        public Student addStudent(String name, int age, String course){
            Student newStudent=new Student(name, age, course);
@@ -55,6 +41,16 @@ public class CourseManager {
 
         public void deleteStudent(Student s){
             Student current=first;
+            if(current==null){
+                return;
+            }
+            if(first.getName().equals(s.getName())){        //head is the required element
+                while(current.getNext()!=first){            //find the last elem in the list
+                    current=current.getNext();
+                }
+                current.setNext(first.getNext());           //set the last element to point to the head's next
+                first=first.getNext();                      //re-set the first elem correctly
+            }
             while(current.getNext()!=first){
             if(current.getNext().getName().equals(s.getName())){
                 current.setNext(current.getNext().getNext());
@@ -63,15 +59,9 @@ public class CourseManager {
            }
            else{
                current=current.getNext();
-           }
-        }
-            //if(current.getNext()==first&&first.getName().equals(s.getName())){
-             // current.setNext(current.getNext().getNext());
-            //System.out.print("The first deleted element is: ");
-             //current.printNode();
+             }
             }
-
-           // return;
+        }
 
         public void printList(){
             Student current=first;
@@ -82,5 +72,17 @@ public class CourseManager {
             System.out.println("CircularList.Student: " + current.getName() + "; Age: " + current.getAge() + "; Course: " + current.getCourse());
             System.out.println("You have reached the end of the list ");
             System.out.println();
+        }
+        //this does not work as of yet
+        public int listLength(Student current){
+
+            if(current.getNext()==first){
+                return 1;
+            }
+            else{
+                int result=listLength(current.getNext());
+                return result;
+            }
+
         }
 }
